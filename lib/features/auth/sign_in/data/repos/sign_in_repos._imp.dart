@@ -23,6 +23,30 @@ Future<Either<Failure, UserSignInEntity>>postSignInUser ( {required String email
      return const Left(LogInWithEmailAndPasswordFailure());
     }
   }
+  
+  @override
+  Future<Either<Failure, UserSignInEntity>> postSignUpUserWithGithub() async{
+     try {
+        final result = await signInRomteDataSource.postSignInUserWithGithub();
+          return Right(result);
+       } on FirebaseAuthException catch (e) {
+       return Left(LogInWithEmailAndPasswordFailure.fromCode(e.code));
+    } catch (_) {
+     return const Left(LogInWithEmailAndPasswordFailure());
+    }
+  }
+  
+  @override
+  Future<Either<Failure, UserSignInEntity>> postSignUpUserWithGoogle() async {
+     try {
+        final result = await signInRomteDataSource.postSignInUserWithGoogle();
+          return Right(result);
+       } on FirebaseAuthException catch (e) {
+       return Left(LogInWithGoogleFailure.fromCode(e.code));
+    } catch (_) {
+     return const Left(LogInWithGoogleFailure());
+    }
+  }
 
  
 }

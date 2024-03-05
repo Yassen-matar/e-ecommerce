@@ -11,7 +11,6 @@ import '../../../../core/function/snack_bar.dart';
 
 class SignIn extends StatelessWidget {
   const SignIn({super.key});
-
   @override
   Widget build(BuildContext context) {
     final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
@@ -29,6 +28,10 @@ class SignIn extends StatelessWidget {
           } else if (state is SignInFaliure) {
             ScaffoldMessenger.of(context)
                 .showSnackBar(snackBarWidget(state.errorMessage));
+          } else if (state is SignInSuccessWithGoogle) {
+            context.pushNamed(AppRoute.home);
+            ScaffoldMessenger.of(context)
+                .showSnackBar(snackBarWidget("Success"));
           }
         }, builder: (context, state) {
           if (state is SignInLoding) {
@@ -39,4 +42,3 @@ class SignIn extends StatelessWidget {
         }));
   }
 }
-

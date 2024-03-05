@@ -1,5 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
+import 'package:untitled/features/auth/sign_in/domin/use_case/post_sign_in_with_github_use_case.dart';
+import 'package:untitled/features/auth/sign_in/domin/use_case/post_sign_in_with_google_use_case.dart';
 import '../../../../../../core/failure/failure.dart';
 import '../../../domin/entity/user_case.dart';
 import '../../../domin/use_case/post_sign_in_use_case.dart';
@@ -8,8 +10,15 @@ part 'sign_in_state.dart';
 
 class SignInBloc extends Bloc<SignInEvent, SignInState> {
   final PostSignInUseCase postSignInUseCase;
-  SignInBloc(this.postSignInUseCase) : super(SignInInitial()) {
+  final PostSignInWithGithubUseCase postSignInWithGithubUseCase;
+  final PostSignInWithGoogleUseCase postSignInWithGoogleUseCase;
+
+  SignInBloc(this.postSignInUseCase, this.postSignInWithGithubUseCase,
+      this.postSignInWithGoogleUseCase)
+      : super(SignInInitial()) {
     on<SignInWithEmailPassowrd>(_signInWithEmailPassword);
+    on<SignInWithGoogle>(_signInWithGoogle);
+    on<SignInWithGithub>(_signInWithGithub);
   }
   Future _signInWithEmailPassword(
       SignInWithEmailPassowrd event, Emitter<SignInState> emit) async {
@@ -18,6 +27,23 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
         .call(email: event.email, password: event.password);
     result.fold((failure) => emit(SignInFaliure(failure.message)),
         (user) => emit(SignInSucsses(user)));
-  } 
-  
-} 
+  }
+
+  Future _signInWithGoogle(
+      SignInWithGoogle event, Emitter<SignInState> emit) async {
+    emit(SignInLoding());
+    final Either<Failure, UserSignInEntity> result =
+        await postSignInWithGoogleUseCase.call();
+    result.fold((failure) => emit(SignInFaliure(failure.message)),
+        (user) => emit(SignInSuccessWithGoogle(user)));
+  }
+
+  Future _signInWithGithub(
+      SignInWithGithub event, Emitter<SignInState> emit) async {
+    emit(SignInLoding());
+    final Either<Failure, UserSignInEntity> result =
+        await postSignInWithGithubUseCase.call();
+    result.fold((failure) => emit(SignInFaliure(failure.message)),
+        (user) => emit(SignInSuccessWithGoogle(user)));
+  }
+}

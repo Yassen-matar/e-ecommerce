@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/core/routing/extensions.dart';
 import 'package:untitled/features/auth/sign_in/view/manegr/bloc/sign_in_bloc.dart';
+import 'package:untitled/features/auth/sign_in/view/sign_in.dart';
 import 'package:untitled/features/auth/sign_in/view/widget/row_icon_sign_in.dart';
 import 'package:untitled/features/auth/sign_in/view/widget/text_form_feild_sign_in.dart';
 
@@ -25,11 +26,17 @@ class SignInBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child:
-          Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-        const Padding(
-          padding: EdgeInsets.all(30.0),
-          child: RowIconSignIn(),
+      child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+        Padding(
+          padding: const EdgeInsets.all(30.0),
+          child: RowIconSignIn(
+            onTapGoogle: () {
+              BlocProvider.of<SignInBloc>(context)
+                        .add(SignInWithGoogle());
+            },
+            onTapGithub: () { BlocProvider.of<SignInBloc>(context)
+                        .add(SignInWithGithub());},
+          ),
         ),
         Text(
           "or use email account login",
@@ -40,9 +47,8 @@ class SignInBody extends StatelessWidget {
         CustomButton(
           onPressed: () {
             if (formKey.currentState!.validate()) {
-              BlocProvider.of<SignInBloc>(context).add(
-                  SignInWithEmailPassowrd(
-                      email: email.text, password: password.text));
+              BlocProvider.of<SignInBloc>(context).add(SignInWithEmailPassowrd(
+                  email: email.text, password: password.text));
             }
           },
           color: Colors.deepPurple,

@@ -1,4 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:untitled/features/auth/sign_in/domin/use_case/post_sign_in_with_github_use_case.dart';
+import 'package:untitled/features/auth/sign_in/domin/use_case/post_sign_in_with_google_use_case.dart';
 import 'package:untitled/features/auth/sign_up/domin/use_case/post_sign_up_with_github_use_case.dart';
 import 'package:untitled/features/auth/sign_up/domin/use_case/post_sign_up_with_google_use_case.dart';
 import '../../features/auth/sign_in/data/data_source/sign_in_remote_data_source.dart';
@@ -26,7 +28,11 @@ providers(context) {
     BlocProvider(
       create: (context) {
         return SignInBloc(
-            PostSignInUseCase(SignInRepoImpl(SignInRomteDataSourceImpl())));
+            PostSignInUseCase(SignInRepoImpl(SignInRomteDataSourceImpl())),
+            PostSignInWithGithubUseCase(
+                SignInRepoImpl(SignInRomteDataSourceImpl())),
+            PostSignInWithGoogleUseCase(
+                SignInRepoImpl(SignInRomteDataSourceImpl())));
       },
     ),
   ];

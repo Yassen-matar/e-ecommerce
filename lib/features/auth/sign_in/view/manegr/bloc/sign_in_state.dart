@@ -4,14 +4,19 @@ class SignInState {}
 
 class SignInInitial extends SignInState {}
 
-class SignInLoding extends SignInState {} 
-class SignInSucsses extends SignInState { 
-    final UserSignInEntity user;
-   SignInSucsses(this.user);
+class SignInLoding extends SignInState {}
+
+class SignInSucsses extends SignInState {
+  final UserSignInEntity user;
+  SignInSucsses(this.user);
 }
 
-class SignInFaliure extends SignInState { 
+class SignInFaliure extends SignInState {
   final String errorMessage;
   SignInFaliure(this.errorMessage);
- 
+}
+
+class SignInSuccessWithGoogle extends SignInState { 
+    final UserSignInEntity user;
+  SignInSuccessWithGoogle(this.user);
 }

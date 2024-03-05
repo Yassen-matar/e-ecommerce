@@ -10,7 +10,7 @@ abstract class SignInRomteDataSource {
       {required String email, required String password});
   Future<UserSignInModel> postSignInUserWithGoogle();
   Future<UserSignInModel> postSignInUserWithGithub();
-  Future<UserSignInModel> resetPassword({
+  Future resetPassword({
     required String email,
   });
 }
@@ -65,12 +65,9 @@ class SignInRomteDataSourceImpl extends SignInRomteDataSource {
   }
   
   @override
-  Future<UserSignInModel> resetPassword({required String email}) async{
-  
-        await firebaseAuth.sendPasswordResetEmail(email: email!); 
-           return UserSignInModel(
-      email: 'email',
-      name:  'username',
-    );
+  Future resetPassword({required String email}) async{
+    
+        await firebaseAuth.sendPasswordResetEmail(email: email); 
+
   }
   }

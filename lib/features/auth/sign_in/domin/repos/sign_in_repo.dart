@@ -8,5 +8,5 @@ abstract class SignInRepo {
       {required String email, required String password});
   Future<Either<Failure, UserSignInEntity>> postSignUpUserWithGoogle();
   Future<Either<Failure, UserSignInEntity>> postSignUpUserWithGithub();
-   Future<Either<Failure, UserSignInEntity>> resetPassword({required String email});
+   Future<Either<Failure, String>>resetPassword({required String email});
 }

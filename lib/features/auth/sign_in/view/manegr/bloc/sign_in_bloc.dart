@@ -52,9 +52,9 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   Future _signInWithForgetPassword(
       SignInWithForgetPassword event, Emitter<SignInState> emit) async {
     emit(SignInLoding());
-    final Either<Failure, UserSignInEntity> result =
+    final result =
         await resetPasswordUseCase.call(email: event.email);
     result.fold((failure) => emit(SignInFaliure(failure.message)),
-        (user) => emit(SignInSucsses(user)));
+        (user) => emit(SignInWithForgetPasswordState()));
   }
 }

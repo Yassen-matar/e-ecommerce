@@ -34,7 +34,9 @@ class SignInBody extends StatelessWidget {
               BlocProvider.of<SignInBloc>(context)
                         .add(SignInWithGoogle());
             },
-            onTapGithub: () { BlocProvider.of<SignInBloc>(context)
+            onTapGithub: () { 
+              
+               BlocProvider.of<SignInBloc>(context)
                         .add(SignInWithGithub());},
           ),
         ),

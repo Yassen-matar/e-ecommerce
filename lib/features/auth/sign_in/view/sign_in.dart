@@ -32,6 +32,9 @@ class SignIn extends StatelessWidget {
             context.pushNamed(AppRoute.home);
             ScaffoldMessenger.of(context)
                 .showSnackBar(snackBarWidget("Success"));
+          } else if (state is SignInWithForgetPasswordState) {
+            ScaffoldMessenger.of(context)
+                .showSnackBar(snackBarWidget("Success go to gmail"));
           }
         }, builder: (context, state) {
           if (state is SignInLoding) {

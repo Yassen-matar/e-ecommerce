@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/features/auth/sign_in/view/widget/title_form.dart';
 
 import '../../../../../core/validation/validation.dart';
 import '../../../../widget/custom_text_form_feild.dart';
+import '../manegr/bloc/sign_in_bloc.dart';
 
 class ColumTextFormFeildSignIn extends StatelessWidget {
   final GlobalKey<FormState> formKey;
@@ -47,8 +49,10 @@ class ColumTextFormFeildSignIn extends StatelessWidget {
               validator: (val) => vailedate(val!, 8, 15, 'password'),
             ), 
               TextButton(
-              onPressed: () { 
-
+              onPressed: () {
+                  
+                BlocProvider.of<SignInBloc>(context)
+                        .add(SignInWithForgetPassword(email: email.text));
               }, 
               
               child: Text(

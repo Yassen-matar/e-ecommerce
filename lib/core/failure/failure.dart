@@ -78,7 +78,7 @@ class SignUpWithEmailAndPasswordFailure extends Failure implements Exception {
     }
   }
 }
- 
+
 /// Thrown during the sign in with google process if a failure occurs.
 class LogInWithGoogleFailure extends Failure implements Exception {
   const LogInWithGoogleFailure([
@@ -92,6 +92,10 @@ class LogInWithGoogleFailure extends Failure implements Exception {
       case 'account-exists-with-different-credential':
         return const LogInWithGoogleFailure(
           'Account exists with different credentials.',
+        );
+      case 'email is empty':
+        return const LogInWithGoogleFailure(
+          'email is empty',
         );
       case 'invalid-credential':
         return const LogInWithGoogleFailure(
@@ -123,6 +127,47 @@ class LogInWithGoogleFailure extends Failure implements Exception {
         );
       default:
         return const LogInWithGoogleFailure();
+    }
+  }
+}
+ 
+ /// Thrown during the sign in with google process if a failure occurs.
+class ForgetPasswordFailure extends Failure implements Exception {
+  const ForgetPasswordFailure([
+    super.message = 'An unknown exception occurred.',
+  ]);
+
+  /// Create an authentication message
+  /// from a firebase authentication exception code.
+  factory ForgetPasswordFailure.fromCode(String code) {
+    switch (code) {
+      case 'account-exists-with-different-credential':
+        return const ForgetPasswordFailure(
+          'Account exists with different credentials.',
+        );
+      case 'email is empty':
+        return const ForgetPasswordFailure(
+          'email is empty',
+        );
+      case 'invalid-credential':
+        return const ForgetPasswordFailure(
+          'The credential received is malformed or has expired.',
+        );
+      case 'operation-not-allowed':
+        return const ForgetPasswordFailure(
+          'Operation is not allowed.  Please contact support.',
+        );
+      case 'user-disabled':
+        return const ForgetPasswordFailure(
+          'This user has been disabled. Please contact support for help.',
+        );
+      case 'user-not-found':
+        return const ForgetPasswordFailure(
+          'Email is not found, please create an account.',
+        );
+   
+      default:
+        return const ForgetPasswordFailure();
     }
   }
 }

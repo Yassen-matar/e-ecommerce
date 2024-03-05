@@ -7,59 +7,63 @@ import '../../../../../core/failure/failure.dart';
 import '../../domin/entity/user_case.dart';
 import '../../domin/repos/sign_in_repo.dart';
 
-
 class SignInRepoImpl extends SignInRepo {
   SignInRomteDataSource signInRomteDataSource;
-  SignInRepoImpl(this.signInRomteDataSource); 
+  SignInRepoImpl(this.signInRomteDataSource);
 
   @override
-Future<Either<Failure, UserSignInEntity>>postSignInUser ( {required String email, required String password}) async {
+  Future<Either<Failure, UserSignInEntity>> postSignInUser(
+      {required String email, required String password}) async {
     try {
-        final result = await signInRomteDataSource.postSignUpUser(email : email, password : password,);
-          return Right(result);
-       } on FirebaseAuthException catch (e) {
-       return Left(LogInWithEmailAndPasswordFailure.fromCode(e.code));
+      final result = await signInRomteDataSource.postSignUpUser(
+        email: email,
+        password: password,
+      );
+      return Right(result);
+    } on FirebaseAuthException catch (e) {
+      return Left(LogInWithEmailAndPasswordFailure.fromCode(e.code));
     } catch (_) {
-     return const Left(LogInWithEmailAndPasswordFailure());
+      return const Left(LogInWithEmailAndPasswordFailure());
     }
   }
-  
+
   @override
-  Future<Either<Failure, UserSignInEntity>> postSignUpUserWithGithub() async{
-     try {
-        final result = await signInRomteDataSource.postSignInUserWithGithub();
-          return Right(result);
-       } on FirebaseAuthException catch (e) {
-       return Left(LogInWithEmailAndPasswordFailure.fromCode(e.code));
+  Future<Either<Failure, UserSignInEntity>> postSignUpUserWithGithub() async {
+    try {
+      final result = await signInRomteDataSource.postSignInUserWithGithub();
+      return Right(result);
+    } on FirebaseAuthException catch (e) {
+      return Left(LogInWithEmailAndPasswordFailure.fromCode(e.code));
     } catch (_) {
-     return const Left(LogInWithEmailAndPasswordFailure());
+      return const Left(LogInWithEmailAndPasswordFailure());
     }
   }
-  
+
   @override
   Future<Either<Failure, UserSignInEntity>> postSignUpUserWithGoogle() async {
-     try {
-        final result = await signInRomteDataSource.postSignInUserWithGoogle();
-          return Right(result);
-       } on FirebaseAuthException catch (e) {
-       return Left(LogInWithGoogleFailure.fromCode(e.code));
+    try {
+      final result = await signInRomteDataSource.postSignInUserWithGoogle();
+      return Right(result);
+    } on FirebaseAuthException catch (e) {
+      return Left(LogInWithGoogleFailure.fromCode(e.code));
     } catch (_) {
-     return const Left(LogInWithGoogleFailure());
-    }
-  }
-  
-  @override
- Future<Either<Failure, UserSignInEntity>>  resetPassword({required String email}) async{
-       try {
-       final result =    signInRomteDataSource.resetPassword(email:email );
-          return Right(result as UserSignInEntity);
-       } on FirebaseAuthException catch (e) {
-       return Left(LogInWithGoogleFailure.fromCode(e.code));
-    } catch (_) {
-     return const Left(LogInWithGoogleFailure());
+      return const Left(LogInWithGoogleFailure());
     }
   }
 
- 
+  @override
+  Future<Either<Failure, String>> resetPassword({required String email}) async {
+    try {
+      if (email.isNotEmpty) {
+        signInRomteDataSource.resetPassword(email: email);
+        return const Right("Success");
+      } else {
+        return Left(LogInWithGoogleFailure.fromCode("email is empty"));
+      }
+    } on FirebaseAuthException catch (e) {
+      return Left(LogInWithGoogleFailure.fromCode(e.code));
+    } catch (_) {
+      return const Left(LogInWithGoogleFailure());
+    }
+  }
 }
- 

@@ -35,16 +35,18 @@ Future<Either<Failure, UserEntity>> postSignUpUser( {required String email, requ
     }
   }
   
-  // @override
-  // Future<Either<Failure, UserEntity>> postSignUpUserWithFacebook() async {
-  //       try {
-  //       final  result = await signUpRomteDataSource.postSignUpUserWithFacebook();
-  //         return Right(result);
-  //      } on FirebaseAuthException catch (e) {
-  //      return Left(SignUpWithEmailAndPasswordFailure.fromCode(e.code));
-  //   } catch (_) {
-  //    return const Left(SignUpWithEmailAndPasswordFailure());
-  //   }
-  // }
-}
+  @override
+  Future<Either<Failure, UserEntity>> postSignUpUserWithGithub()async {
+     try {
+        final  result = await signUpRomteDataSource.postSignUpUserWithGithub();
+          return Right(result);
+       } on FirebaseAuthException catch (e) {
+       return Left(SignUpWithEmailAndPasswordFailure.fromCode(e.code));
+    } catch (_) {
+     return const Left(SignUpWithEmailAndPasswordFailure());
+    }
+  }
+  }
+  
+
  

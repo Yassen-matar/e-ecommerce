@@ -6,5 +6,6 @@ class AppImage {
   static const String man = "$rootImage/man.png";
   static const String google = "$rootIcon/google.png"; 
   static const String apple = "$rootIcon/apple.png"; 
-  static const String facebook = "$rootIcon/facebook.png";
+  static const String facebook = "$rootIcon/facebook.png"; 
+    static const String github = "$rootIcon/github.png";
 }

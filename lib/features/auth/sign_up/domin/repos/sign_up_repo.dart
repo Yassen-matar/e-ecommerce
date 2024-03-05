@@ -5,5 +5,5 @@ import 'package:untitled/features/auth/sign_up/domin/entity/user_case.dart';
 abstract class SignUpRepo {
    Future<Either<Failure, UserEntity>> postSignUpUser({required String email, required String password}); 
    Future<Either<Failure, UserEntity>> postSignUpUserWithGoogle();  
-    // Future<Either<Failure, UserEntity>> postSignUpUserWithFacebook(); 
+     Future<Either<Failure, UserEntity>> postSignUpUserWithGithub(); 
 }

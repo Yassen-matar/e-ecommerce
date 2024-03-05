@@ -34,7 +34,6 @@ class SignUp extends StatelessWidget {
             ScaffoldMessenger.of(context)
                 .showSnackBar(snackBarWidget("Success"));
           } else if (state is SignUpFailure) {
-           
             ScaffoldMessenger.of(context)
                 .showSnackBar(snackBarWidget(state.errMessage));
           }
@@ -50,6 +49,10 @@ class SignUp extends StatelessWidget {
                 padding: EdgeInsets.only(
                     top: 50.0.h, right: 30.w, left: 30.w, bottom: 30.h),
                 child: RowIconSignIn(
+                  onTapGithub: () {
+                    BlocProvider.of<SignUpBloc>(context)
+                        .add(SignUpWithGithub());
+                  },
                   onTapGoogle: () {
                     BlocProvider.of<SignUpBloc>(context)
                         .add(SignUpWithGoogle());

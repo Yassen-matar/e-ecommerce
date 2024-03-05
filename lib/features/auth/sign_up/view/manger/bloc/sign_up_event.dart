@@ -4,13 +4,16 @@ class SignUpEvent {
   SignUpEvent();
 }
 
-class SignUpWithEmailPassowrd extends  SignUpEvent {
+class SignUpWithEmailPassowrd extends SignUpEvent {
   final String email;
   final String password;
-   SignUpWithEmailPassowrd({required this.email, required this.password});
+  SignUpWithEmailPassowrd({required this.email, required this.password});
 }
 
-class SignUpWithGoogle extends  SignUpEvent {
+class SignUpWithGoogle extends SignUpEvent {
+  SignUpWithGoogle();
+}
 
-   SignUpWithGoogle();
+class SignUpWithGithub extends SignUpEvent {
+  SignUpWithGithub();
 }

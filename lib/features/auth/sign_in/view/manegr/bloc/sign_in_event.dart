@@ -14,3 +14,10 @@ class SignInWithEmailPassowrd extends SignInEvent {
 class SignInWithGoogle extends SignInEvent {}
 
 class SignInWithGithub extends SignInEvent {}
+
+class SignInWithForgetPassword extends SignInEvent {
+  final String email;
+
+  SignInWithForgetPassword({required this.email}); 
+
+}

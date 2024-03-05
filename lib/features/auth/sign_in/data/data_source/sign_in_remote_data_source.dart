@@ -5,36 +5,36 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 import '../model/user_sign_in_model.dart';
 
-
 abstract class SignInRomteDataSource {
- Future<UserSignInModel> postSignUpUser(  {required String email, required String password}); 
-   Future<UserSignInModel> postSignInUserWithGoogle();
+  Future<UserSignInModel> postSignUpUser(
+      {required String email, required String password});
+  Future<UserSignInModel> postSignInUserWithGoogle();
   Future<UserSignInModel> postSignInUserWithGithub();
+  Future<UserSignInModel> resetPassword({
+    required String email,
+  });
 }
 
 class SignInRomteDataSourceImpl extends SignInRomteDataSource {
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
   @override
-   
   Future<UserSignInModel> postSignUpUser(
       {required String email, required String password}) async {
-  
-      final UserCredential userCredential =
-          await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      ); 
-      return UserSignInModel(
-        email: userCredential.user?.email ?? 'email',
-        name: userCredential.user?.displayName ?? 'username',
-      );
-    
+    final UserCredential userCredential =
+        await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+    return UserSignInModel(
+      email: userCredential.user?.email ?? 'email',
+      name: userCredential.user?.displayName ?? 'username',
+    );
   }
-  
+
   @override
-  Future<UserSignInModel> postSignInUserWithGithub()  async{
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+  Future<UserSignInModel> postSignInUserWithGithub() async {
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
     final GoogleSignInAuthentication? googleAuth =
         await googleUser?.authentication;
     final credential = GoogleAuthProvider.credential(
@@ -49,19 +49,28 @@ class SignInRomteDataSourceImpl extends SignInRomteDataSource {
       name: userCredential.user?.displayName ?? 'username',
     );
   }
-  
+
   @override
-  Future<UserSignInModel> postSignInUserWithGoogle()async {
-    
+  Future<UserSignInModel> postSignInUserWithGoogle() async {
     GithubAuthProvider githubAuthProvider = GithubAuthProvider();
     githubAuthProvider.setCustomParameters({
       'allow_signup': 'true',
     });
-      var userCredential =
-    await firebaseAuth.signInWithProvider(githubAuthProvider);
+    var userCredential =
+        await firebaseAuth.signInWithProvider(githubAuthProvider);
     return UserSignInModel(
       email: userCredential.user?.email ?? 'email',
       name: userCredential.user?.displayName ?? 'username',
     );
   }
-}
+  
+  @override
+  Future<UserSignInModel> resetPassword({required String email}) async{
+  
+        await firebaseAuth.sendPasswordResetEmail(email: email!); 
+           return UserSignInModel(
+      email: 'email',
+      name:  'username',
+    );
+  }
+  }

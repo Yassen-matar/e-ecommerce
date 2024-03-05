@@ -20,3 +20,4 @@ class SignInSuccessWithGoogle extends SignInState {
     final UserSignInEntity user;
   SignInSuccessWithGoogle(this.user);
 }
+class SignInWithForgetPasswordState extends SignInState{}

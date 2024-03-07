@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/core/validation/validation.dart';
-import 'package:untitled/features/auth/sign_in/view/widget/title_form.dart';
+import 'package:untitled/features/auth/sign_in/view/sign_in/widget/title_form.dart';
 
 import '../../../../widget/custom_text_form_feild.dart';
 

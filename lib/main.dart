@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/core/routing/app_routes.dart';
 import 'package:untitled/core/routing/multi_bloc_provider.dart';
-import 'package:untitled/features/welcome/welcome.dart';
+import 'package:untitled/features/home/home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
                           elevation: 0, backgroundColor: Colors.white)),
                   onGenerateRoute: AppRouter.generateRoute,
                   debugShowCheckedModeBanner: false,
-                  home: const Welcome(),
+                  home: const HomeScreen(),
                 )));
   }
 }

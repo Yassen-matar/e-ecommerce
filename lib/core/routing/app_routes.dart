@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/core/routing/routes.dart';
-import 'package:untitled/features/auth/sign_in/view/sign_in.dart';
+import 'package:untitled/features/auth/sign_in/view/sign_in/sign_in.dart';
 import 'package:untitled/features/auth/sign_up/view/sign_up.dart';
-import 'package:untitled/features/home/home.dart';
+
+import '../../features/home/home_screen.dart';
 
 class AppRouter {
   static Route generateRoute(RouteSettings settings) {
@@ -10,9 +11,9 @@ class AppRouter {
     /*  final arguments = settings.arguments;*/
 
     switch (settings.name) {
-      case AppRoute.home:
+      case "/":
         return MaterialPageRoute(
-          builder: (_) => const Home(),
+          builder: (_) => const HomeScreen(),
         );
       case AppRoute.signIn:
         return MaterialPageRoute(

@@ -47,12 +47,12 @@ dependencies:
   firebase_auth: ^4.16.0
   google_sign_in: ^6.2.1 
   firebase_app_check: ^0.2.1+15 
- 
   equatable: ^2.0.5
   factory: ^2.1.0
   dartz: ^0.10.1
-  form_validator: ^2.1.1
   lottie: ^3.1.0
+  get_it: ^7.6.7
+  flutter_svg: ^2.0.10+1
  # flutter_facebook_auth: ^6.1.1
 dev_dependencies:
   flutter_test:

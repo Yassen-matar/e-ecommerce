@@ -7,7 +7,7 @@ import 'package:untitled/features/auth/sign_up/domin/use_case/post_sign_up_with_
 import '../../features/auth/sign_in/data/data_source/sign_in_remote_data_source.dart';
 import '../../features/auth/sign_in/data/repos/sign_in_repos._imp.dart';
 import '../../features/auth/sign_in/domin/use_case/post_sign_in_use_case.dart';
-import '../../features/auth/sign_in/view/manegr/bloc/sign_in_bloc.dart';
+import '../../features/auth/sign_in/view/sign_in/manegr/bloc/sign_in_bloc.dart';
 import '../../features/auth/sign_up/data/data_source/sign_up_remote_data_source.dart';
 import '../../features/auth/sign_up/data/repos/signup_repos.dart';
 import '../../features/auth/sign_up/domin/use_case/post_sign_up_use_case.dart';

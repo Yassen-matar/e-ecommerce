@@ -1,36 +1,26 @@
-import 'package:form_validator/form_validator.dart';
 
-
+bool isEmailValid(String email) {
+  String pattern = r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$';
+  RegExp regex = RegExp(pattern);
+  return regex.hasMatch(email);
+}
 
 vailedate(String val, int min, int max, String type) {
-  if (type == "username") {
-    if (ValidationBuilder().minLength(5,val).build() == true) {
-      return "ادخل اسم مستخدم من فضلك";
+
+  if (type == "email") {
+    if (!isEmailValid(val)) {
+      return "Enter a correct email";
     }
   }
-// /////phone
-//   if (type == "phone") {
-//     if (!GetUtils.isPhoneNumber(val)) {
-//       return "ادخل رقم هاتف صحيح";
-//     }
-//   }
-
-  if (type == "email") { 
-
-    if (ValidationBuilder().email(val).maxLength(50).build() == true) {
-      return "ادخل برديد صحيح";
-    }
-  }
-
   if (val.isEmpty) {
-    return "لايوجد بيانات";
+    return "No Data";
   }
 
   if (val.length < min) {
-    return "لا يمكن اصغر $min";
+    return "It can't be smaller than $min";
   }
 
   if (val.length > max) {
-    return "لا يمكن اكبر $max";
+    return "It can't be bigger than $max";
   }
 }

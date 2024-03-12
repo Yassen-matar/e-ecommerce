@@ -2,10 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:untitled/core/routing/extensions.dart';
+import 'package:untitled/core/routing/routes.dart';
 
 import '../../core/constant/app_color.dart';
 import '../../core/constant/enums.dart';
-
 
 class CustomBottomNavBar extends StatelessWidget {
   const CustomBottomNavBar({
@@ -17,7 +18,7 @@ class CustomBottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const Color inActiveIconColor =  Color(0xFFB6B6B6);
+    const Color inActiveIconColor = Color(0xFFB6B6B6);
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 14),
       decoration: BoxDecoration(
@@ -40,15 +41,15 @@ class CustomBottomNavBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               IconButton(
-                icon: SvgPicture.asset(
-                  "assets/icons/Shop Icon.svg", 
-                  color: MenuState.home == selectedMenu
-                      ?AppColor.kPrimaryColor
-                      : inActiveIconColor,
-                ),
-                onPressed: () => null
-                 //   Navigator.pushNamed(context, HomeScreen.routeName),
-              ),
+                  icon: SvgPicture.asset(
+                    "assets/icons/Shop Icon.svg",
+                    color: MenuState.home == selectedMenu
+                        ? AppColor.kPrimaryColor
+                        : inActiveIconColor,
+                  ),
+                  onPressed: () => null
+                  //   Navigator.pushNamed(context, HomeScreen.routeName),
+                  ),
               IconButton(
                 icon: SvgPicture.asset("assets/icons/Heart Icon.svg"),
                 onPressed: () {},
@@ -58,15 +59,26 @@ class CustomBottomNavBar extends StatelessWidget {
                 onPressed: () {},
               ),
               IconButton(
-                icon: SvgPicture.asset(
-                  "assets/icons/User Icon.svg",
-                  color: MenuState.profile == selectedMenu
+                  icon: SvgPicture.asset(
+                    "assets/icons/User Icon.svg",
+                    color: MenuState.profile == selectedMenu
+                        ? AppColor.kPrimaryColor
+                        : inActiveIconColor,
+                  ),
+                  onPressed: () => null
+                  //  Navigator.pushNamed(context, ProfileScreen.routeName),
+                  ),
+              IconButton(
+                  icon: const Icon(
+                    Icons.add_business_rounded,
+                  ),
+                  color: MenuState.categorias == selectedMenu
                       ? AppColor.kPrimaryColor
                       : inActiveIconColor,
-                ),
-                onPressed: () =>null
-                  //  Navigator.pushNamed(context, ProfileScreen.routeName),
-              ),
+                  onPressed: () {
+                    MenuState.categorias;
+                    context.pushNamed(AppRoute.categorias);
+                  }),
             ],
           )),
     );

@@ -77,7 +77,7 @@ class CustomBottomNavBar extends StatelessWidget {
                       : inActiveIconColor,
                   onPressed: () {
                     MenuState.categorias;
-                    context.pushNamed(AppRoute.categorias);
+                    context.pushNamed(AppRoute.viewCategorias);
                   }),
             ],
           )),

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -34,7 +33,7 @@ class ColumTextFormFeildCategorias extends StatelessWidget {
               iconData: const Icon(Icons.create_new_folder_rounded),
               hintText: "Enter name pleas",
               mycontroller: name,
-              validator: (val) => vailedate(val!, 8, 50, 'none'),
+              validator: (val) => vailedate(val!, 3, 50, 'none'),
             ),
           ],
         ),

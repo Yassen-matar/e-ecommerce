@@ -130,8 +130,8 @@ class LogInWithGoogleFailure extends Failure implements Exception {
     }
   }
 }
- 
- /// Thrown during the sign in with google process if a failure occurs.
+
+/// Thrown during the sign in with google process if a failure occurs.
 class ForgetPasswordFailure extends Failure implements Exception {
   const ForgetPasswordFailure([
     super.message = 'An unknown exception occurred.',
@@ -165,9 +165,16 @@ class ForgetPasswordFailure extends Failure implements Exception {
         return const ForgetPasswordFailure(
           'Email is not found, please create an account.',
         );
-   
+
       default:
         return const ForgetPasswordFailure();
     }
   }
+}
+
+/// Thrown during the sign in with google process if a failure occurs.
+class AnyFailure extends Failure implements Exception {
+  const AnyFailure([
+    super.message = 'An unknown exception occurred.',
+  ]);
 }

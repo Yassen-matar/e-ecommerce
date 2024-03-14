@@ -7,6 +7,7 @@ import 'package:untitled/features/auth/sign_in/view/sign_in/widget/app_bar.dart'
 import 'package:untitled/features/auth/sign_up/view/manger/bloc/sign_up_bloc.dart';
 import 'package:untitled/features/auth/sign_up/view/state/varibel_sign_up.dart';
 import 'package:untitled/features/auth/sign_up/view/widget/sign_up_body.dart';
+import '../../../../core/constant/svg.dart';
 import '../../../../core/function/snack_bar.dart';
 
 class SignUp extends StatelessWidget {
@@ -39,7 +40,7 @@ class SignUp extends StatelessWidget {
         }, builder: (context, state) {
           if (state is SignUpLoding) {
             return Center(
-                child: Lottie.asset('assets/lotti/infinity-loop.json'));
+                child: Lottie.asset(AppSvg.loding));
           }
           return SignUpBody(
               formKey: varibel.formKey,

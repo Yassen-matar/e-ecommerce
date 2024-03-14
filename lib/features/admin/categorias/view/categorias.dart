@@ -11,6 +11,7 @@ import 'package:untitled/features/admin/categorias/view/widget/categorias_column
 import 'package:untitled/features/auth/sign_in/view/sign_in/widget/app_bar.dart';
 import 'package:untitled/features/widget/custom_button.dart';
 
+import '../../../../core/constant/svg.dart';
 import '../../../../core/function/snack_bar.dart';
 
 class Categorias extends StatelessWidget {
@@ -37,7 +38,7 @@ class Categorias extends StatelessWidget {
         builder: (context, state) {
           if (state is CategoriasLoding) {
             return Center(
-                child: Lottie.asset('assets/lotti/infinity-loop.json'));
+                child: Lottie.asset(AppSvg.loding));
           }
           return SingleChildScrollView(
             child: Center(

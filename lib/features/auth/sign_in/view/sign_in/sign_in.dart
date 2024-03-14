@@ -7,6 +7,7 @@ import 'package:untitled/features/auth/sign_in/view/sign_in/manegr/bloc/sign_in_
 import 'package:untitled/features/auth/sign_in/view/sign_in/state/state.dart';
 import 'package:untitled/features/auth/sign_in/view/sign_in/widget/app_bar.dart';
 import 'package:untitled/features/auth/sign_in/view/sign_in/widget/sign_in_body.dart';
+import '../../../../../core/constant/svg.dart';
 import '../../../../../core/function/snack_bar.dart';
 
 class SignIn extends StatelessWidget {
@@ -42,7 +43,7 @@ class SignIn extends StatelessWidget {
         }, builder: (context, state) {
           if (state is SignInLoding) {
             return Center(
-                child: Lottie.asset('assets/lotti/infinity-loop.json'));
+                child: Lottie.asset(AppSvg.loding));
           }
           return SignInBody(
               email: varibel.email,

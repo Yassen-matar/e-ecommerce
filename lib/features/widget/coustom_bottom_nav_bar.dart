@@ -1,9 +1,11 @@
 // ignore_for_file: avoid_returning_null_for_void, deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:untitled/core/routing/extensions.dart';
 import 'package:untitled/core/routing/routes.dart';
+import 'package:untitled/features/admin/view_categorais/view/manger/bloc/view_categorais_bloc.dart';
 
 import '../../core/constant/app_color.dart';
 import '../../core/constant/enums.dart';
@@ -77,7 +79,12 @@ class CustomBottomNavBar extends StatelessWidget {
                       : inActiveIconColor,
                   onPressed: () {
                     MenuState.categorias;
-                    context.pushNamed(AppRoute.viewCategorias);
+
+                    context.pushNamed(
+                      AppRoute.viewCategorias,
+                    );
+                    BlocProvider.of<ViewCategoraisBloc>(context)
+                        .add(GetCategorais());
                   }),
             ],
           )),

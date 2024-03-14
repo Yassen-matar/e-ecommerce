@@ -3,6 +3,10 @@ import 'package:untitled/features/admin/categorias/data/data_source/categorias_r
 import 'package:untitled/features/admin/categorias/data/repos/categorais_repo_imp.dart';
 import 'package:untitled/features/admin/categorias/domin/use_case/add_categorais_use_case.dart';
 import 'package:untitled/features/admin/categorias/view/manger/bloc/categorias_bloc.dart';
+import 'package:untitled/features/admin/view_categorais/data/data_sourc/view_categorais_data_source_remote.dart';
+import 'package:untitled/features/admin/view_categorais/data/repos/view_categorais_repo_imp.dart';
+import 'package:untitled/features/admin/view_categorais/domin/use_case/view_categorais_use_case.dart';
+import 'package:untitled/features/admin/view_categorais/view/manger/bloc/view_categorais_bloc.dart';
 import 'package:untitled/features/auth/sign_in/domin/use_case/post_sign_in_with_github_use_case.dart';
 import 'package:untitled/features/auth/sign_in/domin/use_case/post_sign_in_with_google_use_case.dart';
 import 'package:untitled/features/auth/sign_in/domin/use_case/reste_password_use_case.dart';
@@ -44,6 +48,11 @@ providers(context) {
     BlocProvider(
       create: (context) => CategoriasBloc(AddCategoraisUseCase(
           CategoraisRepoImp(CategoriasRomteDataSourceImp()))),
-    )
+    ),
+    BlocProvider(
+        //lazy: false,
+
+        create: (context) => ViewCategoraisBloc(ViewCategoraisUseCase(
+            ViewCategoraisRepoImp(ViewCategoraisDataSourceRemoteImp()))))
   ];
 }

@@ -4,6 +4,7 @@ class AppRoute {
   static const String signUp = "/signUp";
   static const String categorias = "/categorias";
   static const String viewCategorias = "/viewCategorias";
+  static const String homeAdmin = "/homeAdmin";
 
 
 }

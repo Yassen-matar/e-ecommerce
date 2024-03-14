@@ -79,12 +79,12 @@ class CustomBottomNavBar extends StatelessWidget {
                       : inActiveIconColor,
                   onPressed: () {
                     MenuState.categorias;
-
-                    context.pushNamed(
-                      AppRoute.viewCategorias,
-                    );
-                    BlocProvider.of<ViewCategoraisBloc>(context)
-                        .add(GetCategorais());
+                    context.pushNamed(AppRoute.homeAdmin);
+                    // context.pushNamed(
+                    //   AppRoute.viewCategorias,
+                    // );
+                    // BlocProvider.of<ViewCategoraisBloc>(context)
+                    //     .add(GetCategorais());
                   }),
             ],
           )),

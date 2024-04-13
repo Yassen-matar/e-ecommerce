@@ -10,9 +10,7 @@ class ViewCategoraisDataSourceRemoteImp extends ViewCategoraisDataSourceRemote {
     List<QueryDocumentSnapshot>? data = [];
     QuerySnapshot querySnapshot =
         await FirebaseFirestore.instance.collection('categorias').get();
-
     data.addAll(querySnapshot.docs);
-    print(data);
     return data;
   }
 }

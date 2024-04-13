@@ -12,3 +12,7 @@ class AddCategorias extends CategoriasEvent {
 
    const AddCategorias({required this.name});
 }
+ 
+ class UploadFileEvent extends CategoriasEvent { 
+
+}

@@ -4,7 +4,6 @@ import 'package:dartz/dartz.dart';
 import 'package:untitled/features/admin/view_categorais/domin/use_case/view_categorais_use_case.dart';
 
 import '../../../../../../core/failure/failure.dart';
-import '../../../data/model/view_categorais_model.dart';
 
 part 'view_categorais_event.dart';
 part 'view_categorais_state.dart';

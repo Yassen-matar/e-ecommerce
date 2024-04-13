@@ -6,6 +6,7 @@ class AppColor {
   static const kPrimaryTextColor = Color.fromARGB(255, 170, 78, 231);
   static const kPrimaryLightColor = Color(0xFFFFECDF);
   static const kGreyColor = Color.fromARGB(255, 230, 229, 228);
+  static const kSuccussColor = Color.fromARGB(255, 40, 128, 23);
   static const kPrimaryGradientColor = LinearGradient(
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,

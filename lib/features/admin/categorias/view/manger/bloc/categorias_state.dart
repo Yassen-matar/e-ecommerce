@@ -15,10 +15,16 @@ class CategoriasSuccess extends CategoriasState {
   const CategoriasSuccess({required this.masseage});
 }
 
-class CategoriasFaliure extends CategoriasState { 
-    final String? masseage;
+class CategoriasFaliure extends CategoriasState {
+  final String? masseage;
 
   const CategoriasFaliure({required this.masseage});
+}
+
+class CategoraisUploadImageSuccess extends CategoriasState {
+  final String? masseage;
+
+  const CategoraisUploadImageSuccess({required this.masseage});
 }
 
 class CategoriasLoding extends CategoriasState {}

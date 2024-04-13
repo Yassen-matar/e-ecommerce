@@ -10,7 +10,7 @@ import 'package:untitled/features/admin/categorias/view/varibel/varible.dart';
 import 'package:untitled/features/admin/categorias/view/widget/categorias_column_text_form_field.dart';
 import 'package:untitled/features/auth/sign_in/view/sign_in/widget/app_bar.dart';
 import 'package:untitled/features/widget/custom_button.dart';
-
+import 'package:untitled/globals.dart' as global;
 import '../../../../core/constant/svg.dart';
 import '../../../../core/function/snack_bar.dart';
 
@@ -19,6 +19,7 @@ class Categorias extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    global.url = "";
     final varibel = CategoriasVaribale();
     return Scaffold(
       appBar: appBarSignUp("Categorias"),
@@ -29,6 +30,10 @@ class Categorias extends StatelessWidget {
             ScaffoldMessenger.of(context)
                 .showSnackBar(snackBarCategorais("Added Successfully"));
           }
+          if (state is CategoraisUploadImageSuccess) {
+            ScaffoldMessenger.of(context)
+                .showSnackBar(snackBarCategorais("Added Image Successfully"));
+          }
           /////////////////////////////////////
           else if (state is CategoriasFaliure) {
             ScaffoldMessenger.of(context)
@@ -37,8 +42,7 @@ class Categorias extends StatelessWidget {
         },
         builder: (context, state) {
           if (state is CategoriasLoding) {
-            return Center(
-                child: Lottie.asset(AppSvg.loding));
+            return Center(child: Lottie.asset(AppSvg.loding));
           }
           return SingleChildScrollView(
             child: Center(
@@ -48,7 +52,10 @@ class Categorias extends StatelessWidget {
                   SizedBox(
                     height: 30.h,
                   ),
-                  const Text("Pleas add categorias"),
+                  const Text(
+                    "Pleas add categorias",
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600),
+                  ),
                   SizedBox(
                     height: 50.h,
                   ),
@@ -56,6 +63,18 @@ class Categorias extends StatelessWidget {
                     formKey: varibel.formKey,
                     name: varibel.name,
                   ),
+                  CustomButton(
+                      isStyle: true,
+                      textStyle: const TextStyle(
+                          color: AppColor.kPrimaryLightColor, fontSize: 20),
+                      color: global.url != ""
+                          ? AppColor.kSuccussColor
+                          : AppColor.kPrimaryColor,
+                      title: "Add Image Pleas",
+                      onPressed: () {
+                        BlocProvider.of<CategoriasBloc>(context)
+                            .add(UploadFileEvent());
+                      }),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: CustomButton(

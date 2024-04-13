@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:untitled/features/admin/categorias/data/data_source/categorias_remote_data_source.dart';
@@ -13,10 +15,23 @@ class CategoraisRepoImp extends CategoraisRepo {
     try {
       await categoriasRomteDataSourceImp.addCategorais(name);
       return const Right('Success');
-    } on FirebaseException catch (e) { 
-            return Left(AnyFailure(e.code));
-    } catch (e) { 
-            return const Left(AnyFailure());
+    } on FirebaseException catch (e) {
+      return Left(AnyFailure(e.code));
+    } catch (e) {
+      return const Left(AnyFailure());
     }
   }
-}  
+
+  @override
+  Future<Either<Failure, String>> uploadFile(
+      File path, String imagePath) async {
+    try {
+      await categoriasRomteDataSourceImp.uploadFile(path, imagePath);
+      return const Right('Success');
+    } on FirebaseException catch (e) {
+      return Left(AnyFailure(e.code));
+    } catch (e) {
+      return const Left(AnyFailure());
+    }
+  }
+}

@@ -9,10 +9,9 @@ import 'package:untitled/features/home/home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(); 
-    await FirebaseAppCheck.instance.activate( 
+  await Firebase.initializeApp();
+  await FirebaseAppCheck.instance.activate(
     webProvider: ReCaptchaV3Provider('recaptcha-v3-site-key'),
-    
   );
   runApp(const MyApp());
 }
@@ -26,7 +25,8 @@ class MyApp extends StatelessWidget {
         providers: providers(context),
         child: ScreenUtilInit(
             builder: (context, child) => MaterialApp(
-                  theme: ThemeData(
+                  theme: ThemeData( 
+                    
                       appBarTheme: const AppBarTheme(
                           elevation: 0, backgroundColor: Colors.white)),
                   onGenerateRoute: AppRouter.generateRoute,

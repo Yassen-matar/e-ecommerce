@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:untitled/features/admin/categorias/data/data_source/categorias_remote_data_source.dart';
 import 'package:untitled/features/admin/categorias/data/repos/categorais_repo_imp.dart';
 import 'package:untitled/features/admin/categorias/domin/use_case/add_categorais_use_case.dart';
+import 'package:untitled/features/admin/categorias/domin/use_case/upload_file_use_case.dart';
 import 'package:untitled/features/admin/categorias/view/manger/bloc/categorias_bloc.dart';
 import 'package:untitled/features/admin/view_categorais/data/data_sourc/view_categorais_data_source_remote.dart';
 import 'package:untitled/features/admin/view_categorais/data/repos/view_categorais_repo_imp.dart';
@@ -46,8 +47,10 @@ providers(context) {
       },
     ),
     BlocProvider(
-      create: (context) => CategoriasBloc(AddCategoraisUseCase(
-          CategoraisRepoImp(CategoriasRomteDataSourceImp()))),
+      create: (context) => CategoriasBloc(
+          AddCategoraisUseCase(
+              CategoraisRepoImp(CategoriasRomteDataSourceImp())),
+          UploadFileUseCase(CategoraisRepoImp(CategoriasRomteDataSourceImp()))),
     ),
     BlocProvider(
         //lazy: false,

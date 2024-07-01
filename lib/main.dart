@@ -25,8 +25,8 @@ class MyApp extends StatelessWidget {
         providers: providers(context),
         child: ScreenUtilInit(
             builder: (context, child) => MaterialApp(
-                  theme: ThemeData( 
-                    
+                  theme: ThemeData(
+                      scaffoldBackgroundColor: Colors.white,
                       appBarTheme: const AppBarTheme(
                           elevation: 0, backgroundColor: Colors.white)),
                   onGenerateRoute: AppRouter.generateRoute,

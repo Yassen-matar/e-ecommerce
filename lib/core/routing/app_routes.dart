@@ -28,12 +28,12 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const SignUp(),
         );
-      ////////////////
+      ////////////////categorias
       case AppRoute.categorias:
         return MaterialPageRoute(
           builder: (_) => const Categorias(),
         );
-      /////////////////
+      /////////////////home
       case AppRoute.home:
         return MaterialPageRoute(
           builder: (_) => const HomeScreen(),

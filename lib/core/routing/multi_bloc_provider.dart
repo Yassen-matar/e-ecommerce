@@ -54,7 +54,6 @@ providers(context) {
     ),
     BlocProvider(
         //lazy: false,
-
         create: (context) => ViewCategoraisBloc(ViewCategoraisUseCase(
             ViewCategoraisRepoImp(ViewCategoraisDataSourceRemoteImp()))))
   ];

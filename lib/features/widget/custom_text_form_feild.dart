@@ -36,7 +36,7 @@ class CustomTextFormField extends StatelessWidget {
             initialValue: value,
             controller: mycontroller,
             keyboardType: keyboardType,
-            enableInteractiveSelection: false,
+            enableInteractiveSelection: false,  
             //hide password
             obscureText: obscureText,
             //validate

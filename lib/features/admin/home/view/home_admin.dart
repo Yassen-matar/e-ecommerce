@@ -6,7 +6,6 @@ import 'package:untitled/core/constant/style.dart';
 import 'package:untitled/core/routing/extensions.dart';
 import 'package:untitled/features/admin/view_categorais/view/manger/bloc/view_categorais_bloc.dart';
 import 'package:untitled/features/auth/sign_in/view/sign_in/widget/app_bar.dart';
-
 import '../../../../core/routing/routes.dart';
 
 class HomeAdmin extends StatelessWidget {
@@ -15,6 +14,7 @@ class HomeAdmin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: appBarSignUp("Home Admin"),
         body: GridView(
           physics: const BouncingScrollPhysics(),
